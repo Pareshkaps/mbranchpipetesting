@@ -3,7 +3,6 @@ pipeline {
     
     tools {
         maven "MyMaven"
-        java "MyJdk"
     }
     stages {
         stage('Git-checkout') {
