@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     tool {
-        Maven 'MyMaven 3.6.3'
-        Java 'MyJdk8'
+        maven "MyMaven"
+        java "MyJdk"
     }
     stages {
         stage('Git-checkout') {
