@@ -1,23 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Git-checkout') {
             steps { 
-                echo 'Building the application'
-            }
-        }
-    }
-    stages {
-        stage('Test') {
-            steps { 
-                echo 'Testing the application'
-            }
-        }
-    }
-     stages {
-        stage('Deploy') {
-            steps { 
-                echo 'Deploying the application'
+                git branch: 'main', credentialsId: 'mbranchpipetesting-creds', url: 'https://github.com/Pareshkaps/mbranchpipetesting.git'
             }
         }
     }
