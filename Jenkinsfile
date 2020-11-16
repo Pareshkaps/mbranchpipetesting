@@ -15,5 +15,17 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage ('Deploy-qa') {
+            steps{
+                sshagent(['tomcat_qa']) {
+                    sh """
+                        scp -o StrictHostKeyChecking=no target/*war tomcat@10.128.0.3:/home/tomcat/apache-tomcat-8.5.59/webapps/
+                        ssh tomcat@10.128.0.3 /home/tomcat/apache-tomcat-8.5.59/shutdown.sh
+                        ssh tomcat@10.128.0.3 /home/tomcat/apache-tomcat-8.5.59/startup.sh
+                    
+                    """
+                        }  
+                 }
+        }
     }
 }
